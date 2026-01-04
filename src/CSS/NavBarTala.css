@@ -1,0 +1,125 @@
+
+/* ================= NAVBAR GENERALE ================= */
+.navbar {
+  height: 70px;
+  background-color: white !important;
+  border-bottom: 1px solid black !important;
+  box-shadow: none !important;
+}
+
+/* ================= LOGO ================= */
+.navbar-brand-custom {
+  z-index: 10;
+}
+
+.navbar-brand-custom img {
+  height: 50px;
+}
+
+/* ================= LINK NAVBAR ================= */
+.nav-link-custom {
+  color: black !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  padding: 0.5rem 1rem !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: darkgreen !important;
+  text-decoration: none !important;
+}
+
+.nav-link-custom.active {
+  color: green !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+/* ================= DESKTOP: LAYOUT ORIZZONTALE ================= */
+@media (min-width: 992px) {
+  /* Container con flexbox */
+  .navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Logo al centro assoluto */
+  .navbar-brand-custom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  /* Nav sinistra e destra in riga */
+  .nav-left-custom,
+  .nav-right-custom {
+    display: flex;
+    flex-direction: row !important;
+    gap: 1.5rem;
+  }
+
+  /* Nav sinistra occupa spazio a sinistra */
+  .nav-left-custom {
+    justify-content: flex-start;
+  }
+
+  /* Nav destra occupa spazio a destra */
+  .nav-right-custom {
+    justify-content: flex-end;
+  }
+
+  /* Assicura che il Navbar.Collapse usi tutto lo spazio */
+  .navbar-collapse {
+    display: flex !important;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+}
+
+/* ================= MOBILE: MENU VERTICALE ================= */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: white;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-link-custom {
+    text-align: center;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Logo a sinistra su mobile */
+  .navbar-brand-custom {
+    position: static;
+    transform: none;
+  }
+
+  /* Nav in colonna su mobile */
+  .nav-left-custom,
+  .nav-right-custom {
+    flex-direction: column;
+  }
+}
+
+/* ================= HAMBURGER BUTTON ================= */
+.navbar-toggler {
+  border: none !important;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
