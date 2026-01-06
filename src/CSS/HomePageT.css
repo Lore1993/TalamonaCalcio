@@ -1,0 +1,19 @@
+#hero-section {
+  background-color: #03c639; /* verde */
+ padding : 5vh;
+}
+
+.news-title a {
+  color: #e81d05;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-title a:hover {
+  text-decoration: underline;
+}
+
+.news-section .card {
+  border-radius: 10px;
+  overflow: hidden;
+}

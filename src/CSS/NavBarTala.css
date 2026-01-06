@@ -1,125 +1,133 @@
-
-/* ================= NAVBAR GENERALE ================= */
-.navbar {
+/* ================= NAVBAR BASE ================= */
+.custom-navbar {
   height: 70px;
   background-color: white !important;
-  border-bottom: 1px solid black !important;
-  box-shadow: none !important;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
 }
 
-/* ================= LOGO ================= */
-.navbar-brand-custom {
-  z-index: 10;
+.custom-navbar .container-fluid {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.navbar-brand-custom img {
-  height: 50px;
-}
-
-/* ================= LINK NAVBAR ================= */
-.nav-link-custom {
+/* ================= STILE LINK GENERICI ================= */
+.custom-navbar .nav-link {
   color: black !important;
   font-weight: 700 !important;
-  font-size: 1.1rem !important;
+  font-size: 1.4rem !important;
+  text-decoration: none !important;
   padding: 0.5rem 1rem !important;
-  text-decoration: none !important;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
-.nav-link-custom:hover {
+.custom-navbar .nav-link:hover {
   color: darkgreen !important;
-  text-decoration: none !important;
 }
 
-.nav-link-custom.active {
+/* Solo il primo link del nav-left è verde (Home) */
+.nav-left .nav-link:first-child {
   color: green !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
 }
 
-/* ================= DESKTOP: LAYOUT ORIZZONTALE ================= */
-@media (min-width: 992px) {
-  /* Container con flexbox */
-  .navbar .container-fluid {
-    display: flex;
-    justify-content: space-between;
+/* ================= MOBILE (< 992px) ================= */
+@media (max-width: 991px) {
+  
+  /* NASCONDI tutto il desktop */
+  .nav-left,
+  .nav-right,
+  .logo-center {
+    display: none !important;
+  }
+
+  /* Logo + MENU cliccabile */
+  .mobile-menu-trigger {
+    display: flex !important;
     align-items: center;
-    position: relative;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
   }
 
-  /* Logo al centro assoluto */
-  .navbar-brand-custom {
+  .mobile-menu-trigger img {
+    height: 70px;
+  }
+
+  .menu-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: black;
+    text-transform: uppercase;
+  }
+
+  /* Menu a tendina */
+  .mobile-dropdown {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-  }
-
-  /* Nav sinistra e destra in riga */
-  .nav-left-custom,
-  .nav-right-custom {
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom: 1px solid black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row !important;
-    gap: 1.5rem;
+    flex-direction: column;
+    z-index: 999;
   }
 
-  /* Nav sinistra occupa spazio a sinistra */
-  .nav-left-custom {
+  .mobile-dropdown .nav-link {
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+
+  .mobile-dropdown .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ================= DESKTOP (≥ 992px) ================= */
+@media (min-width: 992px) {
+  
+  /* NASCONDI tutto il mobile */
+  .mobile-menu-trigger,
+  .mobile-dropdown {
+    display: none !important;
+  }
+
+  .custom-navbar .container-fluid {
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Link sinistra */
+  .nav-left {
+    display: flex !important;
+    gap: 1.5rem;
+    flex: 1;
     justify-content: flex-start;
   }
 
-  /* Nav destra occupa spazio a destra */
-  .nav-right-custom {
+  /* Logo centrale */
+  .logo-center {
+    display: block !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .logo-center img {
+    height: 80px;
+  }
+
+  /* Link destra */
+  .nav-right {
+    display: flex !important;
+    gap: 1.5rem;
+    flex: 1;
     justify-content: flex-end;
   }
-
-  /* Assicura che il Navbar.Collapse usi tutto lo spazio */
-  .navbar-collapse {
-    display: flex !important;
-    justify-content: space-between;
-    flex-grow: 1;
-  }
-}
-
-/* ================= MOBILE: MENU VERTICALE ================= */
-@media (max-width: 991px) {
-  .navbar-collapse {
-    background-color: white;
-    padding: 1rem 0;
-    margin-top: 0.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-link-custom {
-    text-align: center;
-    padding: 0.75rem 1rem !important;
-  }
-
-  /* Logo a sinistra su mobile */
-  .navbar-brand-custom {
-    position: static;
-    transform: none;
-  }
-
-  /* Nav in colonna su mobile */
-  .nav-left-custom,
-  .nav-right-custom {
-    flex-direction: column;
-  }
-}
-
-/* ================= HAMBURGER BUTTON ================= */
-.navbar-toggler {
-  border: none !important;
-  padding: 0.5rem;
-}
-
-.navbar-toggler:focus {
-  box-shadow: none !important;
-}
-
-.navbar-toggler-icon {
-  width: 1.5rem;
-  height: 1.5rem;
 }
