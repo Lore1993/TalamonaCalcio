@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+svg text {
+  font-family: 'Roboto', sans-serif;
+}
+
 #hero-section {
   background-color: #03c639; /* verde */
  padding : 5vh;
@@ -16,4 +22,34 @@
 .news-section .card {
   border-radius: 10px;
   overflow: hidden;
+}
+
+
+.box-placeholder {
+  background-color: whitesmoke;
+  min-height: 300px;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.box-placeholder:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Titolo dentro il box */
+.box-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #6c757d; /* simile a text-muted */
+  margin: 0;
 }

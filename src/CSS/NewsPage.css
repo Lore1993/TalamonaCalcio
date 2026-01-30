@@ -1,0 +1,149 @@
+
+/* Contenitore principale */
+.news-page {
+  position: relative;
+  margin: 0;
+  padding: 3rem;
+  background-color: #03c639; /* verde cornice superiore e laterale */
+}
+
+/* Cornice verde sopra con titolo */
+.news-hero-frame {
+  display: flex;
+  width: 100%;
+  background-color: #03c639; /* verde unito */
+  padding: 4rem 0 2rem 0; /* spazio sopra e sotto il titolo */
+}
+
+/* Colonne laterali verdi */
+.bg-green-side {
+  flex: 0 0 2rem; /* larghezza laterale */
+  background-color: #03c639;
+}
+
+
+.title-green {
+  color: #e81d05;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px #333;
+  text-align: left;          /* spostato a sinistra */
+.title-green {
+    position: relative;
+    top: 60px; /* altezza della navbar */
+}   
+  margin: 0;
+}
+
+/* Sezione contenuti centrali (cards) */
+.news-content {
+  flex: 1;
+  background-color: white;
+  padding: 2rem;
+}
+
+/* Card notizie */
+.news-card {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(232, 29, 5, 0.2);
+}
+
+.news-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Titolo e testo delle cards */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Footer card */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.card-footer small.text-muted {
+  color: #6c757d;
+}
+
+.card-footer small.text-danger {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Paginazione */
+.pagination-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination-wrapper span {
+  margin-right: 1rem;
+  color: white;
+}
+
+.pagination-wrapper .btn {
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+  color: white !important ;
+}
+
+.pagination-wrapper .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+   color: white !important ;
+}
+
+/* Footer verde */
+.footer-green {
+  background-color: #03c639;
+  color:#03c639;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .title-green {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-green {
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  .news-content {
+    padding: 1rem;
+  }
+  .footer-green {
+    padding: 1rem;
+  }
+}

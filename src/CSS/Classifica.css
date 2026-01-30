@@ -1,0 +1,50 @@
+.classifica-page-section {
+  padding: 2rem 1rem;
+  background-color: #f8f9fa; /* simile bg-light */
+}
+
+.classifica-card,
+.marcatori-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e81d05;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.classifica-card iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  border-radius: 12px;
+  display: block;
+  overflow: hidden;
+}
+
+.marcatori-card iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+  border-radius: 12px;
+  display: block;
+  overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .classifica-card iframe {
+    height: 600px;
+  }
+
+  .marcatori-card iframe {
+    height: 500px;
+  }
+}

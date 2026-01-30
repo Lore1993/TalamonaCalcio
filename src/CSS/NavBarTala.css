@@ -1,7 +1,7 @@
 /* ================= NAVBAR BASE ================= */
 .custom-navbar {
   height: 70px;
-  background-color: white !important;
+  background-color:whitesmoke !important;
   border-bottom: 1px solid black;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
 
 /* ================= STILE LINK GENERICI ================= */
 .custom-navbar .nav-link {
-  color: black !important;
+  color: #333 !important;
   font-weight: 700 !important;
   font-size: 1.4rem !important;
   text-decoration: none !important;
@@ -68,7 +68,7 @@
     top: 70px;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: whitesmoke;
     border-bottom: 1px solid black;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;

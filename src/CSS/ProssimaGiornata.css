@@ -1,0 +1,44 @@
+/* Sezione generale */
+.prossima-partita-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+
+
+/* Card */
+.prossima-partita-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+cursor: pointer;
+  /* limite larghezza desktop */
+  max-width: 520px;
+  width: 100%;
+}
+
+/* iframe fluido */
+.prossima-partita-card iframe {
+  width: 350px;
+  height: 300px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .prossima-partita-card {
+    max-width: 100%;
+  }
+
+  .prossima-partita-card iframe {
+    height: 200px;
+  }
+
+  .prossima-giornata-title {
+    font-size: 1.5rem;
+  }
+}

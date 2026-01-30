@@ -1,0 +1,45 @@
+.marcatori-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.marcatori-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #e81d05;
+}
+
+.marcatori-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 520px; /* limite larghezza desktop */
+}
+
+/* iframe fluido */
+.marcatori-card iframe {
+  width: 100%;
+  height: 700px; /* altezza originale widget */
+  border-radius: 12px;
+  border: none;
+  overflow: hidden;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .marcatori-card {
+    max-width: 100%;
+  }
+
+  .marcatori-card iframe {
+    height: 500px; /* riduce altezza su mobile */
+  }
+}

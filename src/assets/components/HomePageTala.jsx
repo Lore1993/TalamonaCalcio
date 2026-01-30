@@ -4,7 +4,11 @@ import Col from "react-bootstrap/Col";
 import NavBarTala from "./NavBarTala";
 import "../../CSS/HomePageT.css";
 import NewsSecTala from "../../assets/components/Sections/NewsSecTala.jsx";
-
+import Footer from "../../assets/components/Sections/Footer.jsx";
+import UltimoIncontro from "./Sections/UltimoIncontro.jsx";
+import ProssimaGiornata from "./Sections/ProssimaGiornata.jsx";
+import Classifica from "./Sections/Classifica.jsx";
+import Marcatori from "./Sections/Marcatori.jsx";
 function HomePageTala() {
   
 const news = [
@@ -12,37 +16,37 @@ const news = [
       id: 1,
       title: "Vittoria importante",
       description: "Grande prestazione della squadra.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://lorempics.com/200x300",
     },
     {
       id: 2,
       title: "Nuovo allenatore",
       description: "Presentato il nuovo mister.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://lorempics.com/200x300",
     },
     {
       id: 3,
       title: "Settore giovanile",
       description: "Risultati del weekend.",
-      image: "https://via.placeholder.com/400x250",
+     image: "https://lorempics.com/200x300",
     },
     {
       id: 4,
       title: "Allenamento speciale",
       description: "Sessione aperta al pubblico.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://lorempics.com/200x300",
     },
     {
       id: 5,
       title: "Nuove divise",
       description: "Presentazione ufficiale.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://lorempics.com/200x300",
     },
     {
       id: 6,
       title: "Evento sociale",
       description: "Cena di squadra.",
-      image: "https://via.placeholder.com/400x250",
+      image: "https://lorempics.com/200x300",
     },
   ];
 
@@ -66,11 +70,11 @@ const news = [
     textAnchor="middle"
     dominantBaseline="middle"
     fill="#e81d05"
-    stroke="white"
     strokeWidth="3"
     fontSize="80"
     fontWeight="bold"
     letterSpacing="8"
+    stroke="#333"
   >
     US
   </text>
@@ -81,12 +85,12 @@ const news = [
     y="150"
     textAnchor="middle"
     dominantBaseline="middle"
-    fill="#e81d05"
-    stroke="white"
+    fill="#e81d05" 
     strokeWidth="3"
     fontSize="72"
     fontWeight="bold"
     letterSpacing="6"
+    stroke="#333"
   >
     TALAMONESE
   </text>
@@ -98,11 +102,11 @@ const news = [
     textAnchor="middle"
     dominantBaseline="middle"
     fill="#e81d05"
-    stroke="white"
     strokeWidth="2"
     fontSize="36"
     fontWeight="bold"
     letterSpacing="2"
+    stroke="#333"
   >
     since 1979
   </text>
@@ -110,49 +114,29 @@ const news = [
       </section>
 
       {/* NEWS + ULTIMO INCONTRO */}
-      <section className="py-5">
+     <section className="py-5 bg-light">
         <Container>
           <Row className="g-4">
-            <Col xs={12} lg={8}>
-              {/* <News /> */}
-              <NewsSecTala news={news} />
+           
+            <Col xs={12} lg={6}>
+              <NewsSecTala news={news} isFullPage={false} />
             </Col>
 
-            <Col xs={12} lg={4}>
-              {/* <UltimoIncontro /> */}
-              <div className="box-placeholder">ULTIMO INCONTRO</div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* CLASSIFICA / GIORNATA / MARCATORI */}
-      <section className="py-5 bg-light">
-        <Container>
-          <Row className="g-4">
-            <Col xs={12} lg={4}>
-              {/* <Classifica /> */}
-              <div className="box-placeholder">CLASSIFICA</div>
-            </Col>
-
-            <Col xs={12} lg={4}>
-              {/* <Giornata /> */}
-              <div className="box-placeholder">GIORNATA</div>
-            </Col>
-
-            <Col xs={12} lg={4}>
-              {/* <Marcatori /> */}
-              <div className="box-placeholder">MARCATORI</div>
+            {/* COLONNA ULTIMO INCONTRO - 4/12 colonne */}
+            <Col xs={12} lg={6}  className="d-flex flex-column justify-content-center gap-4">
+             <div className="box-placeholder">
+  <UltimoIncontro />
+</div>
+<div className="box-placeholder">
+  <ProssimaGiornata />
+</div>
             </Col>
           </Row>
         </Container>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-dark text-white text-center py-4">
-        {/* <Footer /> */}
-        © Football Club
-      </footer>
+     <Footer />
     </>
   );
 }

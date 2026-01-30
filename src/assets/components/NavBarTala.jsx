@@ -25,7 +25,7 @@ function NavBarTala() {
           <Nav className="nav-left d-none d-lg-flex">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/news">News</Nav.Link>
-            <Nav.Link href="#calendario">Calendario</Nav.Link>
+            <Nav.Link href="/classifica">Classifica</Nav.Link>
           </Nav>
 
           {/* DESKTOP: Logo centrale */}
@@ -35,8 +35,8 @@ function NavBarTala() {
 
           {/* DESKTOP: Link destra */}
           <Nav className="nav-right d-none d-lg-flex">
-            <Nav.Link href="#tesseramento">Tesseramento</Nav.Link>
-            <Nav.Link href="#contatti">Contatti</Nav.Link>
+            
+            <Nav.Link href="/contatti">Contatti</Nav.Link>
             <Nav.Link href="#admin">Admin</Nav.Link>
           </Nav>
 
