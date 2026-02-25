@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { login, creaEvento, getEventi } from '../api/eventi.js';
-import './AdminPage.css';
+import { login, creaEvento, getEventi } from '../../../API/Eventi.js';
+import '../../../CSS/Admin.css';
 
 // ─────────────────────────────────────────────
 // Utility: controlla se il token JWT è scaduto

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import './NewsSecTala.css';
+import '../../../CSS/NewsSecTala.css';
 
 function NewsSecTala({ news, isFullPage = false, isAdmin = false, onDelete, onEdit }) {
   const [hoveredId, setHoveredId] = useState(null);

@@ -6,8 +6,7 @@ import NavBarTala from '../NavBarTala.jsx';
 import '../../../CSS/NewsPage.css';
 import Footer from './Footer';
 import NewsSecTala from './NewsSecTala.jsx';
-import { getEventi, cancellaEvento, modificaEvento } from '../api/eventi.js';
-
+import { getEventi, cancellaEvento, modificaEvento } from '../../../API/Eventi.js';
 /* ─────────────────────────────────────────────
    Controllo validità token JWT
 ───────────────────────────────────────────── */
