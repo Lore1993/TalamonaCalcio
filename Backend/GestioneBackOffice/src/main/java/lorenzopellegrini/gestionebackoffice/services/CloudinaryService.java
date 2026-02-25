@@ -20,17 +20,17 @@ public class CloudinaryService {
                 file.getBytes(),
                 ObjectUtils.asMap(
                         "folder", "talamonese-eventi",
-                        "resource_type", "image"
-                )
-        );
+                        "resource_type", "image"));
         return (String) uploadResult.get("secure_url");
     }
 
     public void delete(String imageUrl) {
-        if (imageUrl == null || imageUrl.isBlank()) return;
+        if (imageUrl == null || imageUrl.isBlank())
+            return;
         try {
             // Estrai il public_id dall'URL di Cloudinary
-            // URL format: https://res.cloudinary.com/CLOUD/image/upload/v123/folder/publicid.ext
+            // URL format:
+            // https://res.cloudinary.com/CLOUD/image/upload/v123/folder/publicid.ext
             String[] parts = imageUrl.split("/");
             String filenameWithExt = parts[parts.length - 1];
             String filename = filenameWithExt.substring(0, filenameWithExt.lastIndexOf('.'));

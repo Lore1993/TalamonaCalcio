@@ -37,7 +37,7 @@ function NavBarTala() {
           <Nav className="nav-right d-none d-lg-flex">
             
             <Nav.Link href="/contatti">Contatti</Nav.Link>
-            <Nav.Link href="#admin">Admin</Nav.Link>
+            <Nav.Link href="/admin">Admin</Nav.Link>
           </Nav>
 
         </Container>
