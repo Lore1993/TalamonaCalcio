@@ -29,7 +29,7 @@ const Footer = () => {
 
         {/* Firma in basso a destra */}
         <div style={{ position: "absolute", bottom: "0.5rem", right: "1rem", fontSize: "0.8rem", color: "#aaa" }}>
-          Created by Lorenzo Pellegrini
+          Created by TheHamzter
         </div>
       </div>
     </footer>

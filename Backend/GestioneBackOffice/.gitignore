@@ -31,3 +31,20 @@ build/
 
 ### VS Code ###
 .vscode/
+# Maven
+*.class
+
+# Spring Boot
+*.jar
+*.war
+
+# Credenziali - NON pushare mai questi file
+application.properties
+application-prod.properties
+application-local.properties
+.env
+
+# IDE
+.idea/
+
+
