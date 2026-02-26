@@ -1,0 +1,173 @@
+/* ═══════════════════════════════════════════
+   ArticoloPage.css
+   Sfondo: giallo carta invecchiata, smussato
+   ═══════════════════════════════════════════ */
+
+/* ── Sfondo pagina ── */
+.art-bg {
+  background-color:#E8DFAF;          /* giallo carta — meno saturo di #CCA425  */
+  background-image:
+    /* texture sottile per togliere la lucidità */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
+    );
+  min-height: 100vh;
+}
+
+/* ── Container testo ── */
+.art-container {
+  max-width: 820px !important;
+  padding: 48px 24px 80px !important;
+}
+
+/* ── Loading ── */
+.art-loading {
+  text-align: center;
+  color: #7a6030;
+  padding-top: 80px;
+  font-size: 1rem;
+}
+
+/* ── Errore ── */
+.art-errore {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.art-errore p {
+  color: #c0392b;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* ── Bottone indietro ── */
+.art-btn-back {
+  background: transparent;
+  border: none;
+  color: #7a6030;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  text-decoration: underline;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.art-btn-back:hover {
+  color: #3a2a08;
+}
+
+/* ── Badge ── */
+.art-badges {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 16px;
+  flex-wrap: wrap;
+}
+
+.art-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.art-badge--rosso  { background-color: #e81d05; }
+.art-badge--verde  { background-color: #2a7a2a; }
+.art-badge--blu    { background-color: #1a5a9a; }
+.art-badge--grigio { background-color: #555;    }
+
+/* ── Header: titolo + data ── */
+.art-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.art-titolo {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #1a0f00;
+  line-height: 1.2;
+  flex: 1;
+  margin: 0;
+}
+
+.art-data {
+  font-size: 0.9rem;
+  color: #7a6030;
+  white-space: nowrap;
+  padding-top: 8px;
+  font-style: italic;
+}
+
+/* ── Avversario ── */
+.art-avversario {
+  color: #5a4520;
+  font-size: 1rem;
+  margin: 6px 0 28px;
+}
+
+/* ── Separatore rosso ── */
+.art-divider {
+  border: none;
+  border-top: 2px solid#A5BD9C;
+  margin-bottom: 32px;
+  opacity: 1;
+}
+
+/* ── Testo articolo ── */
+.art-testo {
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: #1a0f00;
+  margin-bottom: 40px;
+  white-space: pre-wrap;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* ── Immagine ── */
+.art-figura {
+  margin: 0 0 40px 0;
+}
+
+.art-immagine {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(80, 50, 0, 0.25);
+}
+
+/* ── Bottone torna alle news ── */
+.art-footer-btn {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.art-btn-primary {
+  background: #e81d05;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+
+.art-btn-primary:hover {
+  opacity: 0.88;
+}

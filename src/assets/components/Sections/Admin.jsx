@@ -104,6 +104,8 @@ export default function AdminPage() {
   // ═══════════ LOGIN ═══════════
   if (!isLogged) {
     return (
+      <>
+       <NavBarTala />
       <div className="loginPage">
         <div className="grid" />
         <div className="loginCard">
@@ -127,6 +129,7 @@ export default function AdminPage() {
           </form>
         </div>
       </div>
+      </>
     );
   }
 

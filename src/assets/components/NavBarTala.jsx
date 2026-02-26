@@ -17,7 +17,7 @@ function NavBarTala() {
             className="mobile-menu-trigger d-lg-none" 
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <img src="src/Scudetto.png" alt="Scudetto" height="40" />
+            <img src="/src/Scudetto.png" alt="Scudetto" height="40" />
             <span className="menu-label">MENU</span>
           </div>
 
@@ -30,7 +30,7 @@ function NavBarTala() {
 
           {/* DESKTOP: Logo centrale */}
           <Navbar.Brand href="/" className="logo-center d-none d-lg-block">
-            <img src="src/Scudetto.png" alt="Scudetto" height="50" />
+            <img src="/src/Scudetto.png" alt="Scudetto" height="50" />
           </Navbar.Brand>
 
           {/* DESKTOP: Link destra */}
