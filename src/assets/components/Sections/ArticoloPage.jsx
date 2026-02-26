@@ -5,7 +5,6 @@ import NavBarTala from '../NavBarTala.jsx';
 import Footer from './Footer.jsx';
 import { getEventi } from '../../../API/Eventi.js';
 
-// Formatta "2025-06-15" → "15 Giugno 2025"
 function formatData(dataStr) {
   if (!dataStr) return '';
   try {
@@ -13,15 +12,12 @@ function formatData(dataStr) {
                   'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
     const d = new Date(dataStr);
     return `${d.getDate()} ${mesi[d.getMonth()]} ${d.getFullYear()}`;
-  } catch {
-    return dataStr;
-  }
+  } catch { return dataStr; }
 }
 
 export default function ArticoloPage() {
-  const { id } = useParams();         // prende l'id dall'URL /articolo/5
-  const navigate = useNavigate();
-
+  const { id }       = useParams();
+  const navigate     = useNavigate();
   const [articolo, setArticolo] = useState(null);
   const [loading, setLoading]   = useState(true);
   const [errore, setErrore]     = useState('');
@@ -29,12 +25,10 @@ export default function ArticoloPage() {
   useEffect(() => {
     getEventi()
       .then(data => {
+        // data è l'array grezzo dal backend — cerchiamo per e.id
         const trovato = data.find(e => String(e.id) === String(id));
-        if (trovato) {
-          setArticolo(trovato);
-        } else {
-          setErrore('Articolo non trovato.');
-        }
+        if (trovato) setArticolo(trovato);
+        else setErrore('Articolo non trovato.');
       })
       .catch(() => setErrore('Errore nel caricamento.'))
       .finally(() => setLoading(false));
@@ -43,138 +37,80 @@ export default function ArticoloPage() {
   return (
     <>
       <NavBarTala />
-
       <Container style={{ maxWidth: '820px', padding: '48px 20px 80px' }}>
 
-        {/* ── Loading ── */}
-        {loading && (
-          <p className="text-muted text-center py-5">Caricamento...</p>
-        )}
+        {loading && <p className="text-muted text-center py-5">Caricamento...</p>}
 
-        {/* ── Errore ── */}
         {errore && (
           <div className="text-center py-5">
             <p className="text-danger mb-4">{errore}</p>
-            <button
-              onClick={() => navigate('/news')}
-              style={btnBack}
-            >
-              ← Torna alle news
-            </button>
+            <button onClick={() => navigate('/news')} style={st.btnBack}>← Torna alle news</button>
           </div>
         )}
 
-        {/* ── Articolo ── */}
         {articolo && (
           <>
-            {/* Breadcrumb / back */}
-            <button onClick={() => navigate(-1)} style={btnBack}>
-              ← Indietro
-            </button>
+            <button onClick={() => navigate(-1)} style={st.btnBack}>← Indietro</button>
 
-            {/* Badge competizione / luogo */}
+            {/* Badge */}
             <div style={{ display: 'flex', gap: '8px', margin: '24px 0 16px', flexWrap: 'wrap' }}>
-              {articolo.competizione && (
-                <span style={badge('#e81d05')}>{articolo.competizione}</span>
-              )}
+              {articolo.competizione && <span style={st.badge('#e81d05')}>{articolo.competizione}</span>}
               {articolo.luogo && (
-                <span style={badge(articolo.luogo === 'Casa' ? '#2a7a2a' : '#1a5a9a')}>
+                <span style={st.badge(articolo.luogo === 'Casa' ? '#2a7a2a' : '#1a5a9a')}>
                   {articolo.luogo}
                 </span>
               )}
-              {articolo.risultato && (
-                <span style={badge('#333')}>⚽ {articolo.risultato}</span>
-              )}
+              {articolo.risultato && <span style={st.badge('#333')}>⚽ {articolo.risultato}</span>}
             </div>
 
-            {/* Titolo + data */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: '20px',
-              flexWrap: 'wrap',
-              marginBottom: '8px'
-            }}>
-              <h1 style={{
-                fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
-                fontWeight: '800',
-                color: '#1a1a1a',
-                lineHeight: 1.2,
-                flex: 1
-              }}>
+            {/* Titolo + Data */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', flexWrap: 'wrap', marginBottom: '8px' }}>
+              <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: '800', color: '#1a1a1a', lineHeight: 1.2, flex: 1 }}>
                 {articolo.titolo}
               </h1>
-              <span style={{
-                fontSize: '0.9rem',
-                color: '#888',
-                whiteSpace: 'nowrap',
-                paddingTop: '8px'
-              }}>
+              <span style={{ fontSize: '0.9rem', color: '#888', whiteSpace: 'nowrap', paddingTop: '8px' }}>
                 {formatData(articolo.data)}
               </span>
             </div>
 
-            {/* Avversario */}
             {articolo.avversario && (
               <p style={{ color: '#666', fontSize: '1rem', marginBottom: '32px' }}>
                 vs <strong>{articolo.avversario}</strong>
               </p>
             )}
 
-            {/* Separatore */}
             <hr style={{ borderColor: '#e81d05', borderWidth: '2px', marginBottom: '32px' }} />
 
-            {/* Testo descrizione */}
+            {/* Testo */}
             {articolo.descrizione && (
-              <p style={{
-                fontSize: '1.08rem',
-                lineHeight: '1.85',
-                color: '#333',
-                marginBottom: '40px',
-                whiteSpace: 'pre-wrap'   // rispetta gli a capo inseriti nel form
-              }}>
+              <p style={{ fontSize: '1.08rem', lineHeight: '1.85', color: '#333', marginBottom: '40px', whiteSpace: 'pre-wrap' }}>
                 {articolo.descrizione}
               </p>
             )}
 
             {/* Immagine */}
             {articolo.immagineUrl && (
-              <figure style={{ margin: 0 }}>
-                <img
-                  src={articolo.immagineUrl}
-                  alt={articolo.titolo}
-                  style={{
-                    width: '100%',
-                    borderRadius: '12px',
-                    objectFit: 'cover',
-                    maxHeight: '480px',
-                    display: 'block'
-                  }}
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/800x400/e81d05/ffffff?text=US+TALAMONESE';
-                  }}
-                />
-                <figcaption style={{
-                  fontSize: '0.8rem', color: '#aaa',
-                  marginTop: '8px', textAlign: 'center'
-                }}>
-                  {articolo.titolo}
-                </figcaption>
-              </figure>
+              <img
+                src={articolo.immagineUrl}
+                alt={articolo.titolo}
+                style={{ width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '480px', display: 'block' }}
+                onError={(e) => { e.target.src = 'https://via.placeholder.com/800x400/e81d05/ffffff?text=US+TALAMONESE'; }}
+              />
             )}
 
-            {/* Torna alle news */}
             <div style={{ marginTop: '56px', textAlign: 'center' }}>
-              <button onClick={() => navigate('/news')} style={btnPrimary}>
-                ← Torna a tutte le news
-              </button>
+              <button onClick={() => navigate('/news')} style={st.btnPrimary}>← Torna a tutte le news</button>
             </div>
           </>
         )}
       </Container>
-
       <Footer />
     </>
   );
 }
+
+const st = {
+  btnBack:   { background: 'transparent', border: 'none', color: '#888', cursor: 'pointer', fontSize: '0.9rem', padding: 0, textDecoration: 'underline' },
+  btnPrimary:{ background: '#e81d05', color: '#fff', border: 'none', borderRadius: '8px', padding: '12px 28px', fontWeight: '700', fontSize: '0.95rem', cursor: 'pointer' },
+  badge: (c) => ({ background: c, color: '#fff', fontSize: '0.75rem', fontWeight: '700', padding: '4px 12px', borderRadius: '20px' })
+};

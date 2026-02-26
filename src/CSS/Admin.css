@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
 body {
   margin: 0;
   font-family: 'DM Sans', system-ui, sans-serif;
   background: #09090f;
-  color:whitesmoke;
+  color: whitesmoke;
 }
 
 .grid {
@@ -13,16 +15,22 @@ body {
     linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
+  z-index: 0;
 }
+
+/* ══════════ LOGIN ══════════ */
 
 .loginPage {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .loginCard {
+  position: relative;
+  z-index: 1;
   background: #111118;
   border: 1px solid #1e1e2e;
   border-radius: 20px;
@@ -30,11 +38,40 @@ body {
   width: 100%;
   max-width: 400px;
   box-shadow: 0 40px 80px rgba(0,0,0,.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginBadge {
+  font-size: 2rem;
+  margin-bottom: 16px;
 }
 
 .loginTitle {
   font-size: 1.8rem;
   font-weight: 800;
+  color: #e8e8f0;           /* ← bianco esplicito */
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.loginSub {
+  color: #777;
+  font-size: 0.85rem;
+  margin-bottom: 32px;
+}
+
+.fullWidth { width: 100%; }
+.inputGroup { width: 100%; margin-bottom: 16px; }
+
+.label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #666;
+  margin-bottom: 6px;
 }
 
 .input {
@@ -43,59 +80,347 @@ body {
   border: 1px solid #2a2a38;
   border-radius: 8px;
   padding: 11px 14px;
-  color: #e8e8f0;
-  margin-bottom: 12px;
+  color: #e8e8f0;            /* ← bianco esplicito */
+  font-size: 0.9rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .2s;
 }
 
-.loginBtn, .submitBtn {
-  background: #e81d05;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 700;
+.input:focus { border-color: #e81d05; }
+
+.textarea {
+  height: 120px;
+  resize: vertical;
 }
+
+.loginBtn {
+  width: 100%;
+  padding: 13px;
+  background: #e81d05;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.loginBtn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ══════════ BANNER ══════════ */
 
 .errBanner {
   background: rgba(232,29,5,.12);
   border: 1px solid rgba(232,29,5,.3);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
   color: #ff6b6b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  width: 100%;
 }
 
 .successBanner {
   background: rgba(107,203,119,.1);
   border: 1px solid rgba(107,203,119,.3);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
   color: #6bcb77;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
 }
+
+.warnBadge {
+  background: rgba(255,193,7,.1);
+  border: 1px solid rgba(255,193,7,.3);
+  color: #ffc107;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+}
+
+/* ══════════ DASHBOARD ══════════ */
 
 .dashPage {
   display: flex;
+  min-height: 100vh;
+  background: #09090f;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  position: relative;
 }
 
+/* ── Sidebar ── */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 220px;
   background: #0d0d14;
-  padding: 24px;
+  border-right: 1px solid #1a1a26;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0;
+  z-index: 10;
 }
 
+.sideTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px 28px;
+  border-bottom: 1px solid #1a1a26;
+}
+
+.sideTitle {
+  color: #e8e8f0;           /* ← bianco esplicito */
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.nav {
+  padding: 20px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(232,29,5,.1);
+  color: #e81d05;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #777;              /* ← grigio chiaro visibile */
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.navLink:hover { color: #e8e8f0; }
+
+.sideBottom {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statBox {
+  background: #111118;
+  border: 1px solid #1e1e2e;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.statNum {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #e8e8f0;           /* ← bianco esplicito — questo era il problema */
+}
+
+.statNum span {
+  font-size: 1rem;
+  color: #555;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  color: #777;              /* ← visibile su sfondo scuro */
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.logoutBtn {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  color: #777;
+  border: 1px solid #1e1e2e;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  transition: color .2s, border-color .2s;
+}
+
+.logoutBtn:hover { color: #e8e8f0; border-color: #444; }
+
+/* ── Main ── */
 .main {
+  margin-left: 220px;
   flex: 1;
   padding: 48px;
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
 }
 
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mainTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e8e8f0;           /* ← bianco esplicito */
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.mainSub { color: #666; font-size: 0.88rem; }
+
+/* ── Form griglia ── */
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.field.full {
-  grid-column: 1 / -1;
+.field { display: flex; flex-direction: column; }
+
+.field.full { grid-column: 1 / -1; }
+
+/* ── Upload immagine ── */
+.uploadArea {
+  border: 1px dashed #2a2a38;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s;
+}
+
+.uploadArea:hover { border-color: #555; }
+
+.uploadLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.uploadIcon { font-size: 2rem; }
+.uploadHint { color: #888; font-size: 0.85rem; }
+.uploadSub  { color: #555; font-size: 0.75rem; }
+
+.previewWrap { position: relative; width: 100%; }
+
+.previewImg {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.removeImg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,.7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Bottoni form ── */
+.btnRow {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.submitBtn {
+  flex: 2;
+  padding: 13px;
+  background: #e81d05;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.submitBtn:disabled { opacity: .5; cursor: not-allowed; }
+
+.resetBtn {
+  flex: 1;
+  padding: 13px;
+  background: transparent;
+  color: #777;
+  border: 1px solid #1e1e2e;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  transition: color .2s;
+}
+
+.resetBtn:hover { color: #e8e8f0; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main    { margin-left: 0; padding: 24px 16px; }
+  .form    { grid-template-columns: 1fr; }
+  .field.full { grid-column: 1; }
+
+  .dashPage {
+  display: flex;
+  min-height: 100vh;
+  background: #09090f;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  position: relative;
+  padding-top: 56px;   /* ← altezza della tua navbar */
+}
+
+.sidebar {
+  position: fixed;
+  top: 56px;           /* ← stessa altezza navbar */
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  background: #0d0d14;
+  border-right: 1px solid #1a1a26;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0;
+  z-index: 10;
+}
 }

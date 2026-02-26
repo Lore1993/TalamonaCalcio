@@ -133,7 +133,9 @@ export default function AdminPage() {
   // ═══════════ DASHBOARD ═══════════
   return (
     <>
+    <div>
       <NavBarTala />
+      </div>
       <div className="dashPage">
         <div className="grid" />
 
@@ -191,41 +193,10 @@ export default function AdminPage() {
               />
             </div>
 
-            {/* Data + Avversario */}
+            {/* Data */}
             <div className="field">
               <label className="label">DATA *</label>
               <input type="date" className="input" value={form.data} onChange={set('data')} required />
-            </div>
-
-            <div className="field">
-              <label className="label">AVVERSARIO</label>
-              <input className="input" value={form.avversario} onChange={set('avversario')} placeholder="es. Grosseto FC" />
-            </div>
-
-            {/* Luogo + Competizione */}
-            <div className="field">
-              <label className="label">LUOGO</label>
-              <select className="input" value={form.luogo} onChange={set('luogo')}>
-                <option value="">— seleziona —</option>
-                <option value="Casa">Casa</option>
-                <option value="Trasferta">Trasferta</option>
-              </select>
-            </div>
-
-            <div className="field">
-              <label className="label">COMPETIZIONE</label>
-              <input className="input" value={form.competizione} onChange={set('competizione')} placeholder="es. Serie D" />
-            </div>
-
-            {/* Risultato */}
-            <div className="field full">
-              <label className="label">RISULTATO</label>
-              <input
-                className="input"
-                value={form.risultato}
-                onChange={set('risultato')}
-                placeholder="es. 2-1   (lascia vuoto se la partita non è ancora stata giocata)"
-              />
             </div>
 
             {/* Immagine con preview */}

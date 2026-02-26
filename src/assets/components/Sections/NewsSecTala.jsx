@@ -10,8 +10,7 @@ function NewsSecTala({
   isFullPage = false,
   isAdmin = false,
   clickable = false,
-  onDelete,
-  onEdit
+  onDelete
 }) {
   const [hoveredId, setHoveredId] = useState(null);
   const navigate = useNavigate();
@@ -60,18 +59,14 @@ function NewsSecTala({
                   }}
                 />
 
+                {/* Badge NEWS — sparisce solo quando overlay admin è visibile */}
                 {(!isAdmin || hoveredId !== item.id) && (
                   <div className="news-badge">NEWS</div>
                 )}
 
+                {/* OVERLAY ADMIN — solo pulsante cancella */}
                 {isAdmin && (
                   <div className={`admin-overlay ${hoveredId === item.id ? 'visible' : ''}`}>
-                    <button
-                      className="admin-btn edit-btn"
-                      onClick={(e) => { e.stopPropagation(); onEdit(item); }}
-                    >
-                      ✏️ Modifica
-                    </button>
                     <button
                       className="admin-btn delete-btn"
                       onClick={(e) => {
