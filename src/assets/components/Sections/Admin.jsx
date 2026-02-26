@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { login, creaEvento, getEventi } from '../../../API/Eventi.js';
 import '../../../CSS/Admin.css';
+import NavBarTala from '../NavBarTala.jsx';
+import Footer from './Footer.jsx';
 
-// ─────────────────────────────────────────────
-// Utility: controlla se il token JWT è scaduto
-// ─────────────────────────────────────────────
 function tokenValido() {
   const token = localStorage.getItem('token');
   if (!token) return false;
@@ -27,20 +26,18 @@ const FORM_VUOTO = {
 };
 
 export default function AdminPage() {
-  const [isLogged, setIsLogged] = useState(tokenValido);
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginErr, setLoginErr] = useState('');
+  const [isLogged, setIsLogged]         = useState(tokenValido);
+  const [username, setUsername]         = useState('');
+  const [password, setPassword]         = useState('');
+  const [loginErr, setLoginErr]         = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
-
-  const [form, setForm] = useState(FORM_VUOTO);
-  const [immagine, setImmagine] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [saving, setSaving] = useState(false);
-  const [successMsg, setSuccessMsg] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-  const [eventiCount, setEventiCount] = useState(0);
+  const [form, setForm]                 = useState(FORM_VUOTO);
+  const [immagine, setImmagine]         = useState(null);
+  const [preview, setPreview]           = useState(null);
+  const [saving, setSaving]             = useState(false);
+  const [successMsg, setSuccessMsg]     = useState('');
+  const [errorMsg, setErrorMsg]         = useState('');
+  const [eventiCount, setEventiCount]   = useState(0);
 
   useEffect(() => {
     if (isLogged) {
@@ -102,47 +99,29 @@ export default function AdminPage() {
     }
   };
 
-  const set = (field) => (e) =>
-    setForm(f => ({ ...f, [field]: e.target.value }));
+  const set = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }));
 
-  // ───────── LOGIN ─────────
+  // ═══════════ LOGIN ═══════════
   if (!isLogged) {
     return (
       <div className="loginPage">
         <div className="grid" />
-
         <div className="loginCard">
           <div className="loginBadge">⚽</div>
-
           <h1 className="loginTitle">Admin Panel</h1>
           <p className="loginSub">US Talamonese — Backoffice</p>
 
           <form onSubmit={handleLogin} className="fullWidth">
             <div className="inputGroup">
               <label className="label">USERNAME</label>
-              <input
-                className="input"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                required
-                autoFocus
-              />
+              <input className="input" value={username} onChange={e => setUsername(e.target.value)} required autoFocus />
             </div>
-
             <div className="inputGroup">
               <label className="label">PASSWORD</label>
-              <input
-                className="input"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
+              <input className="input" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
             </div>
-
             {loginErr && <div className="errBanner">{loginErr}</div>}
-
-            <button className="loginBtn" disabled={loginLoading}>
+            <button type="submit" className="loginBtn" disabled={loginLoading}>
               {loginLoading ? 'Accesso in corso...' : 'Accedi →'}
             </button>
           </form>
@@ -151,61 +130,157 @@ export default function AdminPage() {
     );
   }
 
-  // ───────── DASHBOARD ─────────
+  // ═══════════ DASHBOARD ═══════════
   return (
-    <div className="dashPage">
-      <div className="grid" />
+    <>
+      <NavBarTala />
+      <div className="dashPage">
+        <div className="grid" />
 
-      <aside className="sidebar">
-        <div className="sideTop">
-          ⚽ <span className="sideTitle">Talamonese</span>
-        </div>
+        {/* ── Sidebar ── */}
+        <aside className="sidebar">
+          <div className="sideTop">
+            ⚽ <span className="sideTitle">Talamonese</span>
+          </div>
 
-        <div className="sideBottom">
-          <div className="statBox">
-            <div className="statNum">
-              {eventiCount}<span>/15</span>
+          <nav className="nav">
+            <div className="navItem">📝 Nuovo Evento</div>
+            <a href="/news" className="navLink">📰 Vai alle News</a>
+          </nav>
+
+          <div className="sideBottom">
+            <div className="statBox">
+              <div className="statNum">{eventiCount}<span>/15</span></div>
+              <div className="statLabel">eventi attivi</div>
             </div>
-            <div className="statLabel">eventi attivi</div>
+            <button onClick={handleLogout} className="logoutBtn">Esci ↗</button>
           </div>
-          <button onClick={handleLogout} className="logoutBtn">
-            Esci ↗
-          </button>
-        </div>
-      </aside>
+        </aside>
 
-      <main className="main">
-        <h2 className="mainTitle">Nuovo Evento</h2>
-
-        {successMsg && <div className="successBanner">{successMsg}</div>}
-        {errorMsg && <div className="errBanner">{errorMsg}</div>}
-
-        <form onSubmit={handleSubmit} className="form">
-          <div className="field full">
-            <label className="label">TITOLO *</label>
-            <input className="input" value={form.titolo} onChange={set('titolo')} required />
+        {/* ── Main ── */}
+        <main className="main">
+          <div className="mainHeader">
+            <div>
+              <h2 className="mainTitle">Nuovo Evento</h2>
+              <p className="mainSub">Compila il form — l'evento apparirà subito nella pagina news</p>
+            </div>
+            {eventiCount >= 15 && (
+              <div className="warnBadge">⚠️ Al limite — il più vecchio verrà rimosso</div>
+            )}
           </div>
 
-          <div className="field">
-            <label className="label">DATA *</label>
-            <input type="date" className="input" value={form.data} onChange={set('data')} required />
-          </div>
+          {successMsg && <div className="successBanner">{successMsg}</div>}
+          {errorMsg   && <div className="errBanner">{errorMsg}</div>}
 
-          <div className="field">
-            <label className="label">AVVERSARIO</label>
-            <input className="input" value={form.avversario} onChange={set('avversario')} />
-          </div>
+          <form onSubmit={handleSubmit} className="form">
 
-          <div className="field full">
-            <label className="label">IMMAGINE</label>
-            <input id="file-input" type="file" accept="image/*" onChange={handleImmagine} />
-          </div>
+            {/* Titolo */}
+            <div className="field full">
+              <label className="label">TITOLO *</label>
+              <input className="input" value={form.titolo} onChange={set('titolo')} placeholder="es. Vittoria contro il Grosseto" required />
+            </div>
 
-          <button className="submitBtn" disabled={saving}>
-            {saving ? 'Pubblicazione...' : '🚀 Pubblica Evento'}
-          </button>
-        </form>
-      </main>
-    </div>
+            {/* Testo news / descrizione */}
+            <div className="field full">
+              <label className="label">TESTO NEWS</label>
+              <textarea
+                className="input textarea"
+                value={form.descrizione}
+                onChange={set('descrizione')}
+                placeholder="Scrivi qui il testo dell'articolo..."
+              />
+            </div>
+
+            {/* Data + Avversario */}
+            <div className="field">
+              <label className="label">DATA *</label>
+              <input type="date" className="input" value={form.data} onChange={set('data')} required />
+            </div>
+
+            <div className="field">
+              <label className="label">AVVERSARIO</label>
+              <input className="input" value={form.avversario} onChange={set('avversario')} placeholder="es. Grosseto FC" />
+            </div>
+
+            {/* Luogo + Competizione */}
+            <div className="field">
+              <label className="label">LUOGO</label>
+              <select className="input" value={form.luogo} onChange={set('luogo')}>
+                <option value="">— seleziona —</option>
+                <option value="Casa">Casa</option>
+                <option value="Trasferta">Trasferta</option>
+              </select>
+            </div>
+
+            <div className="field">
+              <label className="label">COMPETIZIONE</label>
+              <input className="input" value={form.competizione} onChange={set('competizione')} placeholder="es. Serie D" />
+            </div>
+
+            {/* Risultato */}
+            <div className="field full">
+              <label className="label">RISULTATO</label>
+              <input
+                className="input"
+                value={form.risultato}
+                onChange={set('risultato')}
+                placeholder="es. 2-1   (lascia vuoto se la partita non è ancora stata giocata)"
+              />
+            </div>
+
+            {/* Immagine con preview */}
+            <div className="field full">
+              <label className="label">IMMAGINE (max 2MB)</label>
+              <div className="uploadArea">
+                {preview ? (
+                  <div className="previewWrap">
+                    <img src={preview} alt="preview" className="previewImg" />
+                    <button
+                      type="button"
+                      className="removeImg"
+                      onClick={() => {
+                        setImmagine(null);
+                        setPreview(null);
+                        document.getElementById('file-input').value = '';
+                      }}
+                    >
+                      ✕ Rimuovi
+                    </button>
+                  </div>
+                ) : (
+                  <label htmlFor="file-input" className="uploadLabel">
+                    <span className="uploadIcon">📷</span>
+                    <span className="uploadHint">Clicca per caricare un'immagine</span>
+                    <span className="uploadSub">JPG, PNG — max 2MB</span>
+                  </label>
+                )}
+                <input id="file-input" type="file" accept="image/*" onChange={handleImmagine} hidden />
+              </div>
+            </div>
+
+            {/* Bottoni */}
+            <div className="field full btnRow">
+              <button type="submit" className="submitBtn" disabled={saving}>
+                {saving ? 'Pubblicazione...' : '🚀 Pubblica Evento'}
+              </button>
+              <button
+                type="button"
+                className="resetBtn"
+                onClick={() => {
+                  setForm(FORM_VUOTO);
+                  setImmagine(null);
+                  setPreview(null);
+                  document.getElementById('file-input').value = '';
+                }}
+              >
+                Reset
+              </button>
+            </div>
+
+          </form>
+        </main>
+      </div>
+      <Footer />
+    </>
   );
 }

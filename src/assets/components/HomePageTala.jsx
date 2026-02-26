@@ -7,8 +7,6 @@ import NewsSecTala from "../../assets/components/Sections/NewsSecTala.jsx";
 import Footer from "../../assets/components/Sections/Footer.jsx";
 import UltimoIncontro from "./Sections/UltimoIncontro.jsx";
 import ProssimaGiornata from "./Sections/ProssimaGiornata.jsx";
-import Classifica from "./Sections/Classifica.jsx";
-import Marcatori from "./Sections/Marcatori.jsx";
 function HomePageTala() {
   
 const news = [
@@ -119,7 +117,7 @@ const news = [
           <Row className="g-4">
            
             <Col xs={12} lg={6}>
-              <NewsSecTala news={news} isFullPage={false} />
+              <NewsSecTala news={news} isFullPage={false} clickable={true} />
             </Col>
 
             {/* COLONNA ULTIMO INCONTRO - 4/12 colonne */}
