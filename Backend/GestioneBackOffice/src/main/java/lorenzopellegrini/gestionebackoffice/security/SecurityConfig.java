@@ -49,7 +49,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         // Cambia con l'URL del tuo frontend React in produzione
-        config.setAllowedOrigins(List.of("http://localhost:3000", "https://tuosito.com"));
+        config.setAllowedOrigins(List.of("http://localhost:5173", "https://tuosito.com"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
