@@ -167,3 +167,52 @@
   padding: 3rem 0;
   color: #999;
 }
+/* Altezza fissa alla card intera */
+.news-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: 100%;          /* ← occupa tutta l'altezza della Col Bootstrap */
+}
+
+/* Body con altezza fissa e overflow nascosto */
+.news-body {
+  display: flex;
+  flex-direction: column;
+  height: 160px;         /* ← altezza fissa del corpo testo, aggiusta a piacere */
+  overflow: hidden;
+}
+
+/* Titolo */
+.news-card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  line-clamp: 4;          /* ← versione standard */
+  overflow: hidden;
+}
+
+/* Testo */
+.news-card-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #6c757d;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;          /* ← versione standard */
+  overflow: hidden;
+}
+.news-body {
+  display: flex;
+  flex-direction: column;
+  height: 230px;               
+  overflow: hidden;
+}
