@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080'; // in produzione Railway ti darà un URL diverso
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
 // Prende tutti gli eventi dal backend
 export async function getEventi() {

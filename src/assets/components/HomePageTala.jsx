@@ -12,6 +12,7 @@ import { getEventi } from "../../API/Eventi.js";
 
 function HomePageTala() {
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getEventi()
@@ -24,7 +25,8 @@ function HomePageTala() {
           date:        e.data,
         })));
       })
-      .catch(() => setNews([]));
+      .catch(() => setNews([]))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -55,7 +57,7 @@ function HomePageTala() {
           <Row className="g-4">
             <Col xs={12} lg={6}>
               {/* clickable=true → cliccando la card va a /articolo/:id */}
-              <NewsSecTala news={news} isFullPage={false} clickable={true} />
+              <NewsSecTala news={news} isFullPage={false} clickable={true} loading={loading} />
             </Col>
             <Col xs={12} lg={6} className="d-flex flex-column justify-content-center gap-4">
               <div className="box-placeholder"><UltimoIncontro /></div>

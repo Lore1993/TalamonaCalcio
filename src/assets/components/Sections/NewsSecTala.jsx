@@ -10,10 +10,37 @@ function NewsSecTala({
   isFullPage = false,
   isAdmin = false,
   clickable = false,
+  loading = false,
   onDelete
 }) {
   const [hoveredId, setHoveredId] = useState(null);
   const navigate = useNavigate();
+
+  const skeletonCount = isFullPage ? 8 : 6;
+
+  if (loading) {
+    return (
+      <div className="news-section">
+        <div className="news-header">
+          <h2 className="news-title">{isFullPage ? 'Tutte le Notizie' : 'Ultime Notizie'}</h2>
+        </div>
+        <Row className="g-3">
+          {Array.from({ length: skeletonCount }).map((_, i) => (
+            <Col key={i} xs={12} sm={6} md={isFullPage ? 4 : 6} lg={isFullPage ? 3 : 4}>
+              <div className="skeleton-card">
+                <div className="skeleton-img" />
+                <div className="skeleton-body">
+                  <div className="skeleton-line long" />
+                  <div className="skeleton-line medium" />
+                  <div className="skeleton-line short" />
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+    );
+  }
 
   const displayedNews = isFullPage ? news : news.slice(0, 6);
 
@@ -55,7 +82,8 @@ function NewsSecTala({
                   alt={item.title}
                   className={`news-image ${hoveredId === item.id ? 'zoom' : ''}`}
                   onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/400x300/e81d05/ffffff?text=US+TALAMONESE';
+                    e.target.onerror = null;
+                    e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23e81d05'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='20' font-family='Arial' text-anchor='middle' dominant-baseline='middle'%3EUS TALAMONESE%3C/text%3E%3C/svg%3E";
                   }}
                 />
 

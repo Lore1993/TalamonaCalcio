@@ -78,9 +78,7 @@ export default function NewsPage() {
             </div>
 
             {loading ? (
-              <div className="text-center py-5">
-                <p className="text-muted">Caricamento eventi...</p>
-              </div>
+              <NewsSecTala news={[]} isFullPage={true} loading={true} />
             ) : errore ? (
               <div className="text-center py-5">
                 <p className="text-danger">{errore}</p>
