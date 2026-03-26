@@ -47,10 +47,9 @@ function NavBarTala() {
           <div className="mobile-dropdown d-lg-none">
             <Nav.Link href="/" onClick={() => setMenuOpen(false)}>Home</Nav.Link>
             <Nav.Link href="/news" onClick={() => setMenuOpen(false)}>News</Nav.Link>
-            <Nav.Link href="#calendario" onClick={() => setMenuOpen(false)}>Calendario</Nav.Link>
-            <Nav.Link href="#tesseramento" onClick={() => setMenuOpen(false)}>Tesseramento</Nav.Link>
-            <Nav.Link href="#contatti" onClick={() => setMenuOpen(false)}>Contatti</Nav.Link>
-            <Nav.Link href="#admin" onClick={() => setMenuOpen(false)}>Admin</Nav.Link>
+            <Nav.Link href="/classifica" onClick={() => setMenuOpen(false)}>Classifica</Nav.Link>
+            <Nav.Link href="/contatti" onClick={() => setMenuOpen(false)}>Contatti</Nav.Link>
+            <Nav.Link href="/admin" onClick={() => setMenuOpen(false)}>Admin</Nav.Link>
           </div>
         )}
       </Navbar>
