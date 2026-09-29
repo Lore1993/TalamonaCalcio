@@ -15,13 +15,14 @@ Team sections
 News and club activities
 Responsive layout for desktop and mobile
 Modern UI and navigation
-Deployment of the final website
 Tech Stack
 HTML
 CSS
+Bootstrap
 JavaScript
-[add the actual technologies you used]
-Project
+SpringBoot
+React
+P
 
 This project was developed independently as a practical side project and is no longer actively maintained.
 
