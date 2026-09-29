@@ -1,3 +1,32 @@
+Talamona Calcio
+
+Website developed as an independent side project for Talamona Calcio.
+
+The goal was to create a modern, responsive website for the football club, with a simple structure for presenting the club, teams, news and activities.
+
+Live Website
+
+Visit the website
+
+What I built
+Responsive website
+Club presentation and information pages
+Team sections
+News and club activities
+Responsive layout for desktop and mobile
+Modern UI and navigation
+Deployment of the final website
+Tech Stack
+HTML
+CSS
+JavaScript
+[add the actual technologies you used]
+Project
+
+This project was developed independently as a practical side project and is no longer actively maintained.
+
+The repository contains the complete project and is publicly available as an example of my hands-on development work.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
